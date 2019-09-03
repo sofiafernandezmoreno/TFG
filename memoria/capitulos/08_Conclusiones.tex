@@ -1,0 +1,19 @@
+\chapter{Conclusiones y trabajos futuros.} \label{ch:conclusion}
+
+En este capítulo se va a hablar de las conclusiones que se pueden observar a partir de los resultados obtenidos en el capítulo anterior y trabajos futuros que se desearían realizar a partir de lo ya concluido con este trabajo.
+\section{Conclusión.} \label{sec:resultado_final.}
+Con este trabajo se ha querido realizar el despliegue completo de la herramienta de monitorización \textbf{Naemon} utilizando para el despliegue el uso de contenedores Docker, además de apoyarnos con la \textbf{interfaz GUI Thruk} para mostrar los resultados de dicha herramienta de forma visual.
+
+Además se añadió la creación de un \textbf{sistema CMS WordPress}, el cual sería el que analizaríamos en profundidad mediante la creación de servicios par medir el rendimiento de este sistema.
+
+Pero antes de todo realizaríamos pruebas de carga en el sistema WordPress mediante el uso del framework de prueba de carga \textbf{Locust}.
+
+Finalmente con todo el despliegue realizado mediante \textbf{Docker-Compose}, se realizó pruebas al sistema WordPress, mediante la creación de plugins y además para finalizar análisis del rendimiento de los servicios mediante la representación gráfica apoyándose de la herramienta complemento \textbf{PNP4Nagios}.
+\newpage
+En cuanto a los resultados obtenidos en dicho análisis se aprecia como el sistema responde de forma positiva durante los treinta minutos de comprobación, ya que no pierde paquetes a la hora de realizar el \textbf{PING}, aplicando \textbf{tiempos RTA} bastante reducidos, además a la hora de mandar peticiones \textbf{HTTP}, éste responde de forma favorable puesto que los tiempos de respuesta son lo suficientemente pequeños para que no haya problemas de pérdida de conexión, además el tamaño de los paquetes generados son siempre los mismos por lo que no tendremos ninguna desfragmentación generada.
+
+\section{Trabajos futuros.} \label{sec:trabajos_futuros.}
+
+En cuanto a los trabajos futuros a partir del actual, el principal sería la realización de forma automatizada del despliegue pudiendo apoyarnos de la herramienta \textbf{Ansible}.
+Otra idea futtura sería la adaptación de la pila ELK(Elasticsearch, Logstash y Kibana. ) de Elastic para recoger todos los registros generados durante la monitorización, haciendo que la búsqueda, análisis y visualización de los datos aparezcan con mayor facilidad en los dashboard, además de poder manejarse gran cantidad de datos de forma eficiente.
+\newpage

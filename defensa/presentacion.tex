@@ -1,0 +1,140 @@
+\documentclass{beamer}
+
+%% Configuración de la presentación
+\mode<presentation> {
+
+  \usetheme{Warsaw}
+
+  
+  \usecolortheme{beaver}
+ 
+}
+
+%% Fuentes de tamaño arbitrario
+\usepackage{lmodern}
+\usepackage{amsfonts}
+\usepackage{dsfont}
+
+%% Gráficos
+\usepackage{graphicx} % Allows including images
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+
+%%% Castellano.
+% noquoting: Permite uso de comillas no españolas.
+% lcroman: Permite la enumeración con numerales romanos en minúscula.
+% fontenc: Usa la fuente completa para que pueda copiarse correctamente del pdf.
+\usepackage[english,spanish,es-noquoting,es-lcroman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\selectlanguage{spanish}
+
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usepackage{tikz-3dplot}
+
+\usepackage{verbatim}
+\usetikzlibrary{arrows,shapes}
+\usepackage{amsthm}
+\usepackage{accents}
+\usepackage{amsmath,amssymb,lmodern}
+
+% Definitions
+\theoremstyle{plain}
+\newtheorem{thm}{Teorema}
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definici\'{o}n}
+\theoremstyle{plain}
+\newtheorem{prop}[thm]{Proposici\'{o}n}
+\theoremstyle{definition}
+\theoremstyle{remark}
+\newtheorem{rem}[thm]{Nota}
+\theoremstyle{definition}
+\newtheorem{lem}[thm]{Lema}
+\newtheorem{cor}[thm]{Corolario}
+\newtheorem{ejemplo}[thm]{Ejemplo}
+\newtheorem{ejemplos}[thm]{Ejemplos}
+% Counter
+
+\newcounter{saveenumi}
+\newcommand{\seti}{\setcounter{saveenumi}{\value{enumi}}}
+\newcommand{\conti}{\setcounter{enumi}{\value{saveenumi}}}
+
+% Sections
+\AtBeginSection{\frame{\sectionpage}}
+\newtranslation[to=spanish]{Section}{Sección}
+
+%comandos para agilizar la escritura de simbolos frecuentes
+\newcommand{\sphere}{\mathds{S}^{d-1}}
+\newcommand{\esfera}{\mathds{S}^{2}}
+\newcommand{\orto}{\mathbb{O}^d}
+\newcommand{\R}{\mathds{R}^d}
+\newcommand{\spharm}{\mathds{Y}^d_n}
+\newcommand{\sphint}{\int_{\sphere}}
+
+\defbeamertemplate{section page}{mine}[1][]{%
+  \begin{centering}
+    {\usebeamerfont{section name}\usebeamercolor[fg]{section name}#1}
+    \vskip1em\par
+    \begin{beamercolorbox}[sep=12pt,center]{part title}
+      \usebeamerfont{section title}\insertsection\par
+    \end{beamercolorbox}
+  \end{centering}
+}
+
+%----------------------------------------------------------------------------------------
+%	TÍTULO
+%----------------------------------------------------------------------------------------
+
+\title[]{Análisis y monitorización de aplicaciones a través de plugins con Naemon} % The short title appears at the bottom of every slide, the full title is only on the title page
+
+\author{Sofía Fernández Moreno} % Your name
+\institute[UGR] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
+{
+  Universidad de Granada \\ % Your institution for the title page
+  % Your email address
+}
+\date{Septiembre de 2019} % Date, can be changed to a custom date
+
+
+
+\begin{document}
+% Spanish
+\selectlanguage{spanish}
+% Para tikz
+\pgfdeclarelayer{background}\theoremstyle{definition}
+\pgfsetlayers{background,main}
+% Secciones
+\setbeamertemplate{section page}[mine]
+
+%% Diapositiva de título.
+\frame{\titlepage}
+
+%% Diapositiva de contenidos.
+% Throughout your presentation, if you choose to use \section{} and \subsection{} commands,
+% these will automatically be printed on this slide as an overview of your presentation
+\begin{frame}
+  \frametitle{Contenidos} % Table of contents slide, comment this block out to remove it
+  \tableofcontents
+\end{frame}
+
+
+%----------------------------------------------------------------------------------------
+%	PRESENTACIÓN
+%----------------------------------------------------------------------------------------
+
+%------------------------------------------------
+\section{Monitorización} % Sections can be created in order to organize your presentation into discrete blocks, all sections and subsections are automatically printed in the table of contents as an overview of the talk
+%------------------------------------------------
+\begin{frame}
+	
+	\frametitle{Objetivos}
+	\begin{itemize}
+		\item Introducir concepto de monitorización
+		\item Comparar diferentes herramientas de monitorización
+		\item Introducción a la herramienta Naemon
+	\end{itemize}
+	
+\end{frame}
+
+
+\end{document}

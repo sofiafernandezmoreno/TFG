@@ -1,0 +1,82 @@
+\chapter{Introducción} 
+
+El objetivo de este proyecto es el completo despliegue de la herramienta \textbf{Naemon} a partir de contenedores \textbf{Docker}, apoyándonos de la creación de un sistema el cual analizaremos más adelante.
+
+\section{Objetivos}
+
+Para poder realizar el despliegue se va estructurar el proyecto de la siguiente forma mediante una serie de objetivos:
+\begin{itemize}
+	\item Revisión bibliográfica del estado del arte. Este objetivo pretende explorar el concepto de monitorización sobre cualquier punto objetivo, como puede ser una red o una aplicación, en nuestro caso llegaremos a la realización del modelado de un sistema como puede ser WordPress, para poder adquirir el conocimiento para plantearnos entre varias herramientas a utilizar, llegar a la elegida por este presente proyecto, la herramienta conocida como Naemon.
+	\item Profundizaremos el conocimiento de Naemon a través de su despliegue utilizando el conjunto de tecnologías conocidas como contenedores, aprovechando para introducir así este concepto realizando una comparación con otros servicios.
+	\item Se creará un sistema de cargas sintéticas, utilizando herramientas de análisis y mediciones del desempeño de varios servicios establecidos en este proyecto, para así obtener el propósito de crear una concurrencia real, llegando a un sistema final de comprobación.
+	\item Realización de representación de la carga con la recopilación de datos obtenidos mediante complementos ofrecidos por la herramienta Naemon.	
+\end{itemize}
+
+\section{Planificación del proyecto}
+\begin{itemize}
+	\item \textbf{T1}: Primer trimestre. Septiembre - Diciembre 2018
+	\item \textbf{T2}: Segundo trimestre. Enero - Marzo 2019
+	\item \textbf{T3}: Tercer trimestre. Abril - Junio 2019
+	\item \textbf{T4}: Cuarto trimestre. Junio - Septiembre 2019
+\end{itemize}
+
+\begin{ganttchart}[%Specs
+	x unit = 1.2cm,  %<---------------------- New x unit 
+	y unit title=0.5cm,
+	y unit chart=0.5cm,
+	vgrid, hgrid,
+	title height=1,
+	%     title/.style={fill=none},
+	title label font=\bfseries\footnotesize,
+	bar/.style={fill=blue},
+	bar height=0.7,
+	%   progress label text={},
+	group right shift=0,
+	group top shift=0.7,
+	group height=.3,
+	group peaks width={0.2},
+	inline]{1}{4}
+	%labels
+	
+	\gantttitle[]{2018-2019}{4} \\                 % title                      % title 3
+	\gantttitle{T1}{1}
+	\gantttitle{T2}{1}
+	\gantttitle{T3}{1}
+	\gantttitle{T4}{1}\\
+	%\gantttitle{Marzo}{1}\\
+	
+	% Setting group if any
+	
+	\ganttgroup[inline=false]{Estado técnica}{1}{2}\\ 
+	
+	\ganttbar[progress=100,inline=false]{\textit{Aprendizaje}}{1}{2}\\
+	\ganttbar[progress=100,inline=false]{\textit{Tecnologías}}{1}{2}\\
+
+	
+	\ganttgroup[inline=false]{Despliegue}{1}{2} \\
+	
+	\ganttbar[progress=100,inline=false]{\textit{Dockerfile}}{1}{2} \\	
+	\ganttbar[progress=100,inline=false]{\textit{Naemon}}{1}{2} \\
+	\ganttbar[progress=100,inline=false]{\textit{Thruk}}{1}{2} \\
+	\ganttbar[progress=100,inline=false]{\textit{Locust}}{1}{2} \\
+	\ganttbar[progress=100,inline=false]{\textit{Docker-Compose}}{1}{2} \\
+	
+	\ganttgroup[inline=false]{Prueba de carga}{2}{3} \\	
+	\ganttbar[progress=100,inline=false]{\textit{Test}}{2}{3} \\
+	
+	\ganttbar[progress=100,inline=false]{\textit{Gráficos}}{2}{3} \\ç
+
+	
+	
+	\ganttgroup[inline=false]{Fase final}{3}{4} \\ 
+	
+	 
+	%\ganttbar[progress=50,inline=false, bar progress label node/.append style={below left= 10pt and 7pt}]{Task B}{3}{4} \\ \\
+	\ganttbar[progress=100,inline=false]{Experimentos}{3}{3}\\ 
+	\ganttbar[progress=100,inline=false]{Resultados}{3}{3} \\
+	\ganttbar[progress=100,inline=false]{Conclusiones}{4}{4} \\ 
+
+	\ganttbar[progress=100,inline=false]{Documentación}{4}{4} \\ 
+	
+\end{ganttchart}
+\newpage

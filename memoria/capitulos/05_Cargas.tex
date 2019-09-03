@@ -1,0 +1,214 @@
+
+\chapter{Pruebas de carga} \label{ch:carga}
+\section{Introducción}
+A la hora de trabajar con un sistema a un nivel de rendimiento estable y bueno es fundamental que se realicen pruebas al comienzo del inicio del desarrollo de su software. Al igual que en las pruebas funcionales, el coste de solucionar defectos se ve aumentado conforme más se tarde en detectarlos.\cite{performingtest}
+
+Para que las pruebas sean lo más fiables posible, el entorno de prueba debe ser lo más parecido posible al de producción.
+
+Las \textbf{pruebas de rendimiento} son un conjunto de pruebas que nos permiten medir la velocidad de ejecución de una serie de tareas en un sistema, bajo unas condiciones determinadas.
+
+Las \textbf{pruebas de rendimiento} sirven, entre otras cosas, para:
+\begin{itemize}
+	\item Demostrar que el sistema cumple los criterios de rendimiento.
+	\item Validar y verificar atributos de la calidad del sistema: escalabilidad, fiabilidad, uso de los recursos.
+	\item Comparar dos sistemas para saber cuál de ellos funciona mejor.
+	\item Detectar cuellos de botella,es decir, medir qué partes del sistema o de carga de trabajo provocan que el conjunto rinda mal.
+\end{itemize}
+\newpage
+\section{Tipos de pruebas de rendimiento}
+
+Podemos encontrarnos con las siguientes pruebas a la hora de probar el rendimiento de un sistema:
+\subsection{Prueba de carga}
+Se trata de una prueba que generalmente observa el comportamiento de una aplicación bajo una serie de peticiones. 
+Por ejemplo puede ser el número esperado de usuarios concurrentes, utilizando la aplicación que realizan un número específico de transacciones, durante el tiempo que dura la carga.
+
+Esta prueba puede mostrar los tiempos de respuesta de todas las transacciones importantes de la aplicación. Si también se monitorizan otros aspectos como la base de datos, el servidor de aplicaciones, etc., entonces esta prueba puede mostrar el cuello de botella en la aplicación.\cite{pruebas}
+
+\subsection{Prueba de estrés}
+
+Se utiliza como su propio nombre dice estresar la aplicación, es decir, que se encuentre en un estado forzado. Se va aumentando el número de usuarios que se agregan a la aplicación y se ejecuta una prueba de carga hasta que se rompe. Este tipo de prueba se realiza para determinar la solidez de la aplicación en los momentos de carga extrema. Esto ayuda a los administradores para determinar si la aplicación rendirá lo suficiente en caso de que la carga real supere a la carga esperada.\cite{pruebas}
+
+\subsection{Prueba de estabilidad (Soak Testing)}
+
+Se realiza para determinar si la aplicación es capaz de aguantar una carga concreta. El objetivo principal de este tipo de pruebas es verificar que no existen fugas de memoria o procesos que pierdan rendimiento transcurrido un cierto periodo de tiempo.\cite{pruebas}
+\newpage
+\subsection{Prueba de pico (Spike Testing)}
+
+En esta prueba, la aplicación se prueba con incrementos y decrementos extremos en la carga. Se realiza para estimar la debilidad de una aplicación.
+
+Ayuda a evaluar el comportamiento del sistema de software en incrementos o disminuciones repentinos en la carga del usuario.\cite{pruebas}
+
+
+\section{Tipo de prueba seleccionada}
+Para este proyecto se ha elegido la opción de realizar pruebas de carga para poder simular el uso de concurrencia real en nuestro despliegue de Naemon.
+
+Además usaremos este tipo de prueba puesto que queremos medir la \textbf{\textit{performance}} de un sitio web, el cual mencionaremos más adelante y este tipo de prueba nos será de gran utilidad.
+
+A continuación se introducirán una serie de herramientas para poder simular este tipo de prueba de carga, donde finalmente se escogerá entre todas una concreta.
+\subsubsection{Gatling}
+Se trata de una herramienta de código abierto y multiplataforma, es decir, podremos utilizarlo en cualquier dispositivo, por lo que permite gran libertad en cuanto a su uso. Además, ofrece una gestión óptima de los recursos del sistema frente a otras herramientas como JMeter\cite{comparativeGatling}. Estas pruebas se pueden hacer sobre diversos protocolos como pueden ser HTTP (páginas web, servicios REST), FTP, sockets de web, etc.\cite{gatling}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.4\textwidth]{imagenes/carga/gatling.png}
+	\caption{Gatling} \label{gatling}
+\end{figure}
+Las pruebas de \textbf{Gatling}  consistirán en simulaciones donde se realizarán flujos de uso de la web, y al final obtendremos un reporte detallado con los tiempos de respuesta, resultados de las peticiones, etc.
+\newpage
+\subsubsection{Locust}
+
+\textbf{Locust} \cite{locust} es una herramienta de prueba de carga de usuario distribuida y fácil de usar. Está diseñado para probar sitios web (u otros sistemas) y determinar cuántos usuarios concurrentes puede manejar un sistema.
+
+La idea es que durante una prueba, un enjambre de langostas atacará el sitio web. El comportamiento de cada langosta (o usuario de prueba, si lo desea) se define por nuestra cuenta y el proceso de enjambre se supervisa desde una interfaz de usuario web en tiempo real. Esto ayudará a probar e identificar cuellos de botella en el código antes de permitir el ingreso de usuarios reales.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.4\textwidth]{imagenes/carga/locust.jpeg}
+	\caption{Locust} \label{locust}
+\end{figure}
+Locust está completamente basado en eventos y, por lo tanto, es posible admitir miles de usuarios concurrentes en una sola máquina. A diferencia de muchas otras aplicaciones basadas en eventos, no usa devoluciones de llamadas. En cambio, usa procesos ligeros, a través de \textit{\textbf{gevent}}. Cada langosta pululando en su sitio se está ejecutando dentro de su propio proceso (o \textit{greenlet}, para ser correcto). Esto permite escribir escenarios muy expresivos en Python sin complicar su código con devoluciones de llamadas.
+\newpage
+\subsubsection{Jmeter}
+\textbf{Apache JMeter} \cite{jmeter} es la única aplicación de escritorio en esta revisión. Tiene una interfaz gráfica de usuario fácil de usar, lo que hace que el desarrollo de pruebas y la depuración sean mucho más fáciles. Tiene una estructura modular, en la que el núcleo se extiende mediante complementos. Esto significa que todos los protocolos y características implementados son complementos que han sido desarrollados por Apache Software Foundation o colaboradores en línea.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.4\textwidth]{imagenes/carga/jmeter.png}
+	\caption{JMeter} \label{jmeter}
+\end{figure}
+Tiene más funciones e integraciones, y también una base de usuarios más grande que cualquier otra herramienta de prueba de carga de código abierto.
+
+El principal aspecto negativo de JMeter es que las configuraciones, incluida la lógica del escenario del usuario, están escritas en XML.
+
+\subsection{Alternativa elegida: Locust}
+
+Se ha elegido esta opción puesto que se trata de un programa multiplataforma por lo que podremos ejecutarlo en cualquier sistema operativo. Además de ofrecer una alta escalabilidad debido a la implementación que cuenta basada en eventos. Otra cosa a destacar, se trata de la escalabilidad en cuanto a la distribución de los agentes, permite incluir un número infinito de agentes. 
+
+Locust es altamente escalable debido a su implementación totalmente basada en eventos. Debido a estos hechos, Locust tiene una comunidad en rápido crecimiento, que prefieren este marco en lugar de JMeter (siendo ésta de las más populares).
+
+Cuenta con una interfaz de usuario de comando y control basada en web, además de soporte para la generación de carga distribuida, lo que lo hace ser más actualizable y seguro para el futuro.
+\newpage
+Permite además la descarga de los resultados en tipo CSV y JSON.
+
+\section{Instalación de Locust}
+
+Locust está disponible en \textbf{PyPI} y se puede instalar a través del comando pip.
+
+\begin{lstlisting}[language=bash]
+$ apt-get install python-pip
+$ pip install locustio
+\end{lstlisting}
+
+\section{Funcionamiento de herramienta Locust}
+Para poder empezar a trabajar en Locust es necesario tener activado un servidor web, que en este caso será \textbf{Apache}.
+Una vez inicializado el servidor web de Apache, si no se encuentra activo podemos activarlo a través del comando:
+
+\begin{lstlisting}[language=bash]
+$ service apache2 start
+\end{lstlisting}
+
+Activado el servidor web, debemos ejecutar \textbf{Locust} en el servidor Web Apache, para ello debemos configurar un archivo \textbf{locustfile.py} que contará con el código necesario para realizar las pruebas de carga necesarias, distribuyendo la prueba de rendimiento en diferentes máquinas para que se pueda crear más carga en la aplicación.\cite{locustfile}
+
+\section{Ejecución distribuida}
+
+La ejecución de una sola máquina no es suficiente para modelar o simular una carga, por lo que Locust admite la ejecución de pruebas de carga distribuidas en múltiples máquinas.
+
+Para hacer esto, se debe iniciar una instancia de Locust en modo maestro usando el flag --master. Dicha instancia será la ejecutada por la interfaz web de Locust, donde se inicia la prueba y se muestran las estadísticas en vivo.
+\newpage
+Para poder simular las cargas debemos de iniciar uno o varios nodos con el flag --slave para simular los esclavos, junto con el --master-host (especificando la IP o nombre del host del nodo maestro).
+
+Una configuración común es ejecutar un solo maestro en una máquina, y luego ejecutar una instancia esclava por núcleo del procesador, en las máquinas esclavas.
+
+Para poder establecer dicha configuración de forma automática a través del despliegue realizado en la tecnología \textbf{Docker}, debemos crear una nueva instancia dentro de nuestro archivo \textbf{docker-compose.yml}.
+
+Para ello creamos las máquinas llamadas \textbf{locust-master y locust-worker} por las cuales queremos simular la carga maestro-esclavo a través de Docker.
+
+En el archivo \textbf{docker-compose.yml} crearemos estas máquinas a través de la imagen \textbf{swernst/locusts}, la cual cuenta con la \textbf{última versión de Locust para Docker}, recogida del repositorio de \textbf{Docker Hub}. En esta imagen tendremos que la instancia del maestro se encarga de alojar una interfaz web, así como la coordinación con los esclavos. En este caso el esclavo se encargará de realizar los test y crear reportes de información al maestro de forma estadística.
+
+Esta división permite escalar el número de esclavos para realizar pruebas de carga realmente grandes.
+
+Ambas vinculan el directorio \textbf{scripts} en el contenedor a un subdirectorio en nuestra maquina host con el mismo nombre. Esto hará que nos permita eliminar los scripts que se quieran usar para dicha prueba y ponerlo a disposición de cualquier caso.
+
+Tenemos que el servicio \textbf{locust-master} tiene un puerto definido, exactamente el puerto 8089, lo que hace que podamos tener acceso a la interfaz web de Locust desde ese servicio.
+Además el servicio \textbf{locust-worker} está tomando un parámetro de comando adicional que le dice que se conecta a master para la orquestación, esto es a través de la línea: \textbf{command: "--master-host=locust-master"}.
+\newpage
+Esto redactado dentro de nuestro archivo \textbf{docker-compose.yml} quedará de la siguiente manera:
+\begin{lstlisting}[language=bash]
+  
+locust-master:
+image: swernst/locusts
+volumes:
+- ./scripts:/scripts
+ports:
+- "8089:8089"
+depends_on:
+- wordpress
+locust-worker:
+image: swernst/locusts
+command: "--master-host=locust-master"
+volumes:
+- ./scripts:/scripts
+
+
+\end{lstlisting}
+
+Donde la línea establecida en locust-master como: 
+
+\begin{lstlisting}[language=bash]
+depends_on:
+- wordpress
+\end{lstlisting}
+
+Viene indicada para la siguiente explicación donde trabajaremos con el sistema final establecido, el cual será en \textbf{WordPress}, donde también será creada un servicio a través del archivo \textbf{docker-compose}.
+
+A la hora de lanzar esta ejecución en el cual tengamos tres instancias trabajando, o lo que es lo mismo tres esclavos, debemos ejecutar la siguiente línea para lanzar el contenedor Docker:
+
+\begin{lstlisting}[language=bash]
+$  docker-compose up --scale locust-worker=3 
+\end{lstlisting}
+
+O simplemente si queremos un maestro y un esclavo haríamos el levantamiento del contenedor de la siguiente manera:
+
+\begin{lstlisting}[language=bash]
+$  docker-compose up 
+\end{lstlisting}
+\newpage
+\section{Configuración Locustfile}
+\textbf{Locust} generará una hebra para cada usuario que está siendo simulado y cada usuario viene representado por una clase \textbf{locust}.
+Para empezar con la configuración de nuestro archivo \textbf{locustfile.py},por el cual nos encargaremos de realizar las pruebas de carga correspondientes a nuestro sistema final, pero antes debemos explicar los atributos que vamos a utilizar para realizar estos test o pruebas:
+
+\begin{itemize}
+	\item \textbf{TaskSet}: se trata de una colección de tareas, es decir, define el comportamiento del usuario. Para cada acción definida debe definirse la anotación \textbf{@task}.
+	\item \textbf{HttpLocust}: utilizada para cargar la prueba de rendimiento de un sistema en el servidor. Representa un usuario el cual será atacado y que será probado con carga. Dicha clase crea un atributo cliente que se trata del cliente HTTP que se encarga de realizar el enlace entre la sesión y las peticiones.
+\end{itemize}
+
+Un ejemplo de un test simple sería el siguiente:
+\begin{lstlisting}[language=Python]
+from locust import HttpLocust, TaskSet, task
+
+class UserBehavior(TaskSet):
+@task(2)
+def root(self):
+self.client.get('/')
+@task(1)
+def host(self):
+self.client.get('/?p=1')
+class WebsiteUser(HttpLocust):
+task_set = UserBehavior
+min_wait = 5000
+max_wait = 9000
+
+\end{lstlisting}
+
+Donde se ha realizado la obtención de los datos de la página principal del sistema y también la obtención de los datos de un artículo concreto del sistema que en este caso ha sido WordPress.
+
+Hay que especificar que en la clase Locust se permite especificar el tiempo de espera mínimo y máximo en milisegundos, por usuario simulador, entre la ejecución de las tareas, esto se realiza mediante las variables \textbf{min\_wait y max\_wait}.
+\newpage
+Cabe mencionar que de forma predeterminada, el tiempo se elige aleatoriamente  de forma uniforme entre dichas variables, pero se puede usar cualquier distribución de tiempo definida por el usuario configurando una variable \textbf{wait\_function} en cualquier función arbitraria. Podemos realizar como ejemplo un tiempo de espera distribuido de forma exponencial con un promedio de 1 segundo, esto en código Python se establece de la siguiente forma:
+\begin{lstlisting}[language=Python]
+
+class WebsiteUser(HttpLocust):
+task_set = UserBehavior
+wait_function = lambda self: random.expovariate(1)*1000
+
+\end{lstlisting}
+
+En el siguiente capítulo pondremos este archivo de configuración a prueba mediante el despliegue de un sistema WordPress, el cual monitorizar la generación de carga por parte de lo clientes y de cómo sirve la carga el sistema, además de modelar la carga a partir de los datos recopilados durante la monitorización.
+\newpage
