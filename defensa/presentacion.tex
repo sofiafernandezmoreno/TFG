@@ -336,22 +336,6 @@ ir determinado de la información de la carga bajo la que fue determinado.
 \section{Conclusiones y futuros trabajos}
 \subsection{Conclusiones}
 \begin{frame}
-	Con este trabajo se ha querido realizar el despliegue completo de la
-	herramienta de monitorización Naemon utilizando para el despliegue el uso
-	de contenedores Docker, además de apoyarnos con la interfaz GUI Thruk
-	para mostrar los resultados de dicha herramienta de forma visual.
-	Además se añadió la creación de un sistema CMS WordPress,
-	el cual serı́a el que analizarı́amos en profundidad mediante la creación de
-	servicios par medir el rendimiento de este sistema.
-	Pero antes de todo realizarı́amos pruebas de carga en el sistema
-	WordPress mediante el uso del framework de prueba de carga Locust.
-	Finalmente con todo el despliegue realizado mediante Docker-
-	Compose, se realizó pruebas al sistema WordPress, mediante la creación de
-	plugins y además para finalizar análisis del rendimiento de los servicios me-
-	diante la representación gráfica apoyándose de la herramienta complemento
-	PNP4Nagios.
-	135136
-	7.2. Trabajos futuros.
 	En cuanto a los resultados obtenidos en dicho análisis se aprecia
 	como el sistema responde de forma positiva durante los treinta minutos de
 	comprobación, ya que no pierde paquetes a la hora de realizar el PING,
@@ -359,20 +343,18 @@ ir determinado de la información de la carga bajo la que fue determinado.
 	peticiones HTTP, éste responde de forma favorable puesto que los tiempos
 	de respuesta son lo suficientemente pequeños para que no haya problemas
 	de pérdida de conexión, además el tamaño de los paquetes generados son
-	siempre los mismos por lo que no tendremos ninguna desfragmentación ge-
-	nerada.
-	7.2.
-	Trabajos futuros.
-	En cuanto a los trabajos futuros a partir del actual, el principal
-	serı́a la realización de forma automatizada del despliegue pudiendo apoyar-
-	nos de la herramienta Ansible. Otra idea futtura serı́a la adaptación de la
-	pila ELK(Elasticsearch, Logstash y Kibana. ) de Elastic para recoger todos
-	los registros generados durante la monitorización, haciendo que la búsque-
-	da, análisis y visualización de los datos aparezcan con mayor facilidad en
-	los dashboard, además de poder manejarse gran cantidad de datos de forma
-	eficiente.
+	siempre los mismos por lo que no tendremos ninguna desfragmentación generada.
+	
+	
 \end{frame}
-
+En cuanto a los trabajos futuros a partir del actual, el principal
+serı́a la realización de forma automatizada del despliegue pudiendo apoyar-
+nos de la herramienta Ansible. Otra idea futtura serı́a la adaptación de la
+pila ELK(Elasticsearch, Logstash y Kibana. ) de Elastic para recoger todos
+los registros generados durante la monitorización, haciendo que la búsque-
+da, análisis y visualización de los datos aparezcan con mayor facilidad en
+los dashboard, además de poder manejarse gran cantidad de datos de forma
+eficiente.
 \begin{frame}{}{}
 	\Huge{\centerline{Gracias por su atención}}
 	\centerline{\Huge{\raisebox{-.25\height}\faGithub}~\large{\href{https://github.com/sofiafernandezmoreno/TFG}{\alert{sofiafernandezmoreno/TFG}}}}
