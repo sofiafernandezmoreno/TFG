@@ -65,7 +65,12 @@
 % Sections
 \AtBeginSection{\frame{\sectionpage}}
 \newtranslation[to=spanish]{Section}{Sección}
-
+\AtBeginSubsection[]
+{
+	\begin{frame}<beamer>{ndice}
+		\tableofcontents[currentsection,currentsubsection]
+	\end{frame}
+}
 %comandos para agilizar la escritura de simbolos frecuentes
 \newcommand{\sphere}{\mathds{S}^{d-1}}
 \newcommand{\esfera}{\mathds{S}^{2}}
@@ -116,10 +121,10 @@
 %% Diapositiva de contenidos.
 % Throughout your presentation, if you choose to use \section{} and \subsection{} commands,
 % these will automatically be printed on this slide as an overview of your presentation
-%begin{frame}
-%  \frametitle{Contenidos} % Table of contents slide, comment this block out to remove it
-%  \tableofcontents
-%\end{frame}
+\begin{frame}
+  \frametitle{Contenidos} % Table of contents slide, comment this block out to remove it
+  \tableofcontents
+\end{frame}
 
 
 %----------------------------------------------------------------------------------------
