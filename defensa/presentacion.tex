@@ -65,7 +65,12 @@
 % Sections
 \AtBeginSection{\frame{\sectionpage}}
 \newtranslation[to=spanish]{Section}{Sección}
-
+\AtBeginSubsection[]
+{
+	\begin{frame}<beamer>{�ndice}
+		\tableofcontents[currentsection,currentsubsection]
+	\end{frame}
+}
 %comandos para agilizar la escritura de simbolos frecuentes
 \newcommand{\sphere}{\mathds{S}^{d-1}}
 \newcommand{\esfera}{\mathds{S}^{2}}
