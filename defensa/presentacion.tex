@@ -439,13 +439,14 @@ ir determinado de la información de la carga bajo la que fue determinado.
 \begin{frame}
 	\frametitle{Exportación de datos en CSV}
 	Para ello la API [34] nos ofrece la forma de
-	exportación a CSV de la siguiente forma: /pnp4nagios/xport/<format>
-	?host=<hostname>&srv=<servicedesc>. Donde:
-	< f ormat > especifica el formato de exportación, teniéndose la opción
+	exportación a CSV de la siguiente forma:
+	
+	/pnp4nagios/xport/<format>?host=<hostname>\&srv=<servicedesc>. 
+	\item $<format>$ especifica el formato de exportación, teniéndose la opción
 	de XML, JSON y CSV.
-	< hostname > especificaremos el nombre del host, en este caso intro-
+	\item $<hostname>$ especificaremos el nombre del host, en este caso intro-
 	ducimos el nombre wordpress.
-	< servicedesc > especificaremos el servicio que queremos exportar su
+	\item $<servicedesc>$ especificaremos el servicio que queremos exportar su
 	información.
 \end{frame}
 \begin{frame}
